@@ -41,8 +41,10 @@ typedef struct tree_t {
  * @brief Init  binary search tree data structure.
  *
  * @param tree Pointer to binary search tree data structure.
+ * @param key Key of root node.
+ * @param value Value of root node.
  */
-void tree_init(tree_t *table);
+void tree_init(tree_t *table, int key, char *value);
 
 /**
  * @ingroup binary_search_tree

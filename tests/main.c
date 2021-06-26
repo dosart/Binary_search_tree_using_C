@@ -1,6 +1,7 @@
 #include <stdio.h>
+#include "tests.h"
 
 int main() {
-  printf("Hello, World!\n");
+  run_tests();
   return 0;
 }
