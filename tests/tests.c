@@ -1,40 +1,46 @@
 #include "tests.h"
 
 void run_tests() {
-  test_add1();
-  test_add2();
-  test_add3();
-
+  run_add_tests();
   run_find_tests();
 }
 
-void test_add1() {
+void run_add_tests() {
+  void (*func_ptr[]) (tree_t *tree, int key, char *value) = {tree_add_r, tree_add};
+  for (size_t i = 0; i < 2; ++i) {
+    test_add1(func_ptr[i]);
+    test_add2(func_ptr[i]);
+    test_add3(func_ptr[i]);
+  }
+}
+
+void test_add1(void (*add) (tree_t *tree, int key, char *value)) {
   printf("test_add1()\n");
 
   tree_t tree;
   tree_init(&tree, 29, "Denis");
 
-  tree_add(&tree, 34, "Dima");
-  tree_add(&tree, 28, "Egor");
+  add(&tree, 34, "Dima");
+  add(&tree, 28, "Egor");
 
   assert(tree.count==3);
 }
 
-void test_add2() {
+void test_add2(void (*add) (tree_t *tree, int key, char *value)) {
   printf("test_add2()\n");
   tree_t *tree = NULL;
-  tree_add(tree, 29, "Denis");
+  add(tree, 29, "Denis");
 }
 
-void test_add3() {
+void test_add3(void (*add) (tree_t *tree, int key, char *value)) {
   printf("test_add3()\n");
 
   tree_t tree;
   tree_init(&tree, 29, "Denis");
 
-  tree_add(&tree, 34, "Dima1");
-  tree_add(&tree, 28, "Egor");
-  tree_add(&tree, 34, "Dima2");
+  add(&tree, 34, "Dima1");
+  add(&tree, 28, "Egor");
+  add(&tree, 34, "Dima2");
 
   assert(tree.count==3);
 }

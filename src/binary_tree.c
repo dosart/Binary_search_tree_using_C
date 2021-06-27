@@ -31,6 +31,26 @@ void tree_add(tree_t *tree, int key, char *value) {
   }
 }
 
+static node_t *add_r(node_t *root, int key, char *value, size_t* count);
+
+void tree_add_r(tree_t *tree, int key, char *value) {
+  if (tree) {
+    tree->root = add_r(tree->root, key, value, &tree->count);
+  }
+}
+
+static node_t *add_r(node_t *root, int key, char *value, size_t* count) {
+  if (root==NULL) {
+    *count = *count + 1;
+    return make_node(key, value);
+  } else if (key > root->key) {
+    root->right = add_r(root->right, key, value, count);
+  } else if (key < root->key) {
+    root->left = add_r(root->left, key, value, count);
+  }
+  return root;
+}
+
 static node_t *make_node(int key, char *value) {
   node_t *node = (node_t *) malloc(sizeof(node_t));
   if (node) {

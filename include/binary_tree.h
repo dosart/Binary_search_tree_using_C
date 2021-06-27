@@ -49,13 +49,24 @@ void tree_init(tree_t *table, int key, char *value);
 /**
  * @ingroup binary_search_tree
  *
- * @brief Add the given key and object to tree.
+ * @brief Add the given key and object to tree(iterative version).
  *
  * @param tree Pointer to binary search tree data structure.
  * @param key Key for value.
  * @param value Value by key.
  */
 void tree_add(tree_t *tree, int key, char *value);
+
+/**
+ * @ingroup binary_search_tree
+ *
+ * @brief Add the given key and object to tree(recursive version).
+ *
+ * @param tree Pointer to binary search tree data structure.
+ * @param key Key for value.
+ * @param value Value by key.
+ */
+void tree_add_r(tree_t *tree, int key, char *value);
 
 /**
  * @ingroup binary_search_tree

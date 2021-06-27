@@ -8,9 +8,11 @@
 
 void run_tests();
 
-void test_add1();
-void test_add2();
-void test_add3();
+void run_add_tests();
+
+void test_add1(void (*add) (tree_t *tree, int key, char *value));
+void test_add2(void (*add) (tree_t *tree, int key, char *value));
+void test_add3(void (*add) (tree_t *tree, int key, char *value));
 
 void run_find_tests();
 
