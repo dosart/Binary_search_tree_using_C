@@ -60,7 +60,7 @@ void tree_add(tree_t *tree, int key, char *value);
 /**
  * @ingroup binary_search_tree
  *
- * @brief Finds key in tree.
+ * @brief Finds key in tree(iterative version).
  *
  * @param tree Pointer to binary search tree data structure.
  * @param key Key for find.
@@ -68,5 +68,17 @@ void tree_add(tree_t *tree, int key, char *value);
  * @returns founded node or NULL if not found
  */
 const node_t* tree_find(tree_t *tree, int key);
+
+/**
+ * @ingroup binary_search_tree
+ *
+ * @brief Finds key in tree(recursive version).
+ *
+ * @param tree Pointer to binary search tree data structure.
+ * @param key Key for find.
+ *
+ * @returns founded node or NULL if not found
+ */
+const node_t* tree_find_r(tree_t *tree, int key);
 
 #endif //BINARY_SEARCH_TREE_INCLUDE_BINARY_TREE_H_

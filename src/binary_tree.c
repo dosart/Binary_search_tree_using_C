@@ -57,3 +57,26 @@ const node_t *tree_find(tree_t *tree, int key) {
   }
   return NULL;
 }
+
+static const node_t *find_r(node_t *root, int key);
+
+const node_t *tree_find_r(tree_t *tree, int key) {
+  if (tree) {
+    return find_r(tree->root, key);
+  }
+  return NULL;
+}
+
+const node_t *find_r(node_t *root, int key) {
+  if (root==NULL) {
+    return NULL;
+  }
+  if (root->key==key) {
+    return root;
+  }
+  if (key > root->key) {
+    return find_r(root->right, key);
+  } else {
+    return find_r(root->left, key);
+  }
+}

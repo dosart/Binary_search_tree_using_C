@@ -5,11 +5,7 @@ void run_tests() {
   test_add2();
   test_add3();
 
-  test_find1();
-  test_find2();
-  test_find3();
-  test_find4();
-  test_find5();
+  run_find_tests();
 }
 
 void test_add1() {
@@ -43,15 +39,26 @@ void test_add3() {
   assert(tree.count==3);
 }
 
-void test_find1() {
+void run_find_tests() {
+  const node_t* (*functptr[])(tree_t *tree, int key) = {tree_find, tree_find_r};
+  for (size_t i = 0; i < 2; ++i) {
+    test_find1(functptr[i]);
+    test_find2(functptr[i]);
+    test_find3(functptr[i]);
+    test_find4(functptr[i]);
+    test_find5(functptr[i]);
+  }
+}
+
+void test_find1(const node_t* (*find) (tree_t *tree, int key)) {
   printf("test_find1()\n");
 
   tree_t *tree = NULL;
-  const node_t *find = tree_find(tree, 29);
-  assert(find==NULL);
+  const node_t *r= find(tree, 29);
+  assert(r==NULL);
 }
 
-void test_find2() {
+void test_find2(const node_t* (*find) (tree_t *tree, int key)) {
   printf("test_find2()\n");
 
   tree_t tree;
@@ -59,12 +66,11 @@ void test_find2() {
   tree_add(&tree, 34, "Dima1");
   tree_add(&tree, 28, "Egor");
 
-  const node_t *find = tree_find(&tree, 35);
-
-  assert(find==NULL);
+  const node_t *r = find(&tree, 35);
+  assert(r==NULL);
 }
 
-void test_find3() {
+void test_find3(const node_t* (*find) (tree_t *tree, int key)) {
   printf("test_find3()\n");
 
   tree_t tree;
@@ -72,13 +78,13 @@ void test_find3() {
   tree_add(&tree, 34, "Dima1");
   tree_add(&tree, 28, "Egor");
 
-  const node_t *find = tree_find(&tree, 29);
+  const node_t *r = find(&tree, 29);
 
-  assert(find->key==29);
-  assert(strcmp(find->value, "Denis")==0);
+  assert(r->key==29);
+  assert(strcmp(r->value, "Denis")==0);
 }
 
-void test_find4() {
+void test_find4(const node_t* (*find) (tree_t *tree, int key)) {
   printf("test_find4()\n");
 
   tree_t tree;
@@ -86,13 +92,13 @@ void test_find4() {
   tree_add(&tree, 34, "Dima1");
   tree_add(&tree, 28, "Egor");
 
-  const node_t *find = tree_find(&tree, 34);
+  const node_t *r = find(&tree, 34);
 
-  assert(find->key==34);
-  assert(strcmp(find->value, "Dima1")==0);
+  assert(r->key==34);
+  assert(strcmp(r->value, "Dima1")==0);
 }
 
-void test_find5() {
+void test_find5(const node_t* (*find) (tree_t *tree, int key)) {
   printf("test_find5()\n");
 
   tree_t tree;
@@ -100,8 +106,8 @@ void test_find5() {
   tree_add(&tree, 34, "Dima1");
   tree_add(&tree, 28, "Egor");
 
-  const node_t *find = tree_find(&tree, 28);
+  const node_t *r= find(&tree, 28);
 
-  assert(find->key==28);
-  assert(strcmp(find->value, "Egor")==0);
+  assert(r->key==28);
+  assert(strcmp(r->value, "Egor")==0);
 }
