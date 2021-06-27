@@ -57,4 +57,16 @@ void tree_init(tree_t *table, int key, char *value);
  */
 void tree_add(tree_t *tree, int key, char *value);
 
+/**
+ * @ingroup binary_search_tree
+ *
+ * @brief Finds key in tree.
+ *
+ * @param tree Pointer to binary search tree data structure.
+ * @param key Key for find.
+ *
+ * @returns founded node or NULL if not found
+ */
+const node_t* tree_find(tree_t *tree, int key);
+
 #endif //BINARY_SEARCH_TREE_INCLUDE_BINARY_TREE_H_

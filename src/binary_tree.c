@@ -40,3 +40,20 @@ static node_t *make_node(int key, char *value) {
   }
   return node;
 }
+
+const node_t *tree_find(tree_t *tree, int key) {
+  if (tree) {
+    node_t *curr = NULL;
+    for (curr = tree->root; curr!=NULL;) {
+      if (curr->key==key) {
+        break;
+      } else if (key > curr->key) {
+        curr = curr->right;
+      } else {
+        curr = curr->left;
+      }
+    }
+    return curr;
+  }
+  return NULL;
+}
