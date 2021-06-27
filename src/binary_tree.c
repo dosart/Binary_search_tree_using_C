@@ -31,7 +31,7 @@ void tree_add(tree_t *tree, int key, char *value) {
   }
 }
 
-static node_t *add_r(node_t *root, int key, char *value, size_t* count);
+static node_t *add_r(node_t *root, int key, char *value, size_t *count);
 
 void tree_add_r(tree_t *tree, int key, char *value) {
   if (tree) {
@@ -39,7 +39,7 @@ void tree_add_r(tree_t *tree, int key, char *value) {
   }
 }
 
-static node_t *add_r(node_t *root, int key, char *value, size_t* count) {
+static node_t *add_r(node_t *root, int key, char *value, size_t *count) {
   if (root==NULL) {
     *count = *count + 1;
     return make_node(key, value);
@@ -99,4 +99,20 @@ const node_t *find_r(node_t *root, int key) {
   } else {
     return find_r(root->left, key);
   }
+}
+
+static const node_t *min(const node_t *root);
+
+const node_t *tree_min(const tree_t *tree) {
+  if (tree) {
+    return min(tree->root);
+  }
+  return NULL;
+}
+
+const node_t *min(const node_t *root) {
+  while (root->left!=NULL) {
+    root = root->left;
+  }
+  return root;
 }

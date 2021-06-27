@@ -92,4 +92,15 @@ const node_t* tree_find(tree_t *tree, int key);
  */
 const node_t* tree_find_r(tree_t *tree, int key);
 
+/**
+ * @ingroup binary_search_tree
+ *
+ * @brief Returns node with min key.
+ *
+ * @param tree Pointer to binary search tree data structure.
+ *
+ * @returns founded node or NULL if not found
+ */
+const node_t *tree_min(const tree_t *tree);
+
 #endif //BINARY_SEARCH_TREE_INCLUDE_BINARY_TREE_H_
