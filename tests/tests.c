@@ -120,7 +120,7 @@ void test_find5(const node_t *(*find)(tree_t *tree, int key)) {
 }
 
 void run_min_tests() {
-  const node_t *(*funct_ptr[])(const tree_t *root) = {tree_min};
+  const node_t *(*funct_ptr[])(const tree_t *root) = {tree_min, tree_min_r};
   for (size_t i = 0; i < 1; ++i) {
     test_min1(funct_ptr[i]);
     test_min2(funct_ptr[i]);

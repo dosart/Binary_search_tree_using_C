@@ -116,3 +116,18 @@ const node_t *min(const node_t *root) {
   }
   return root;
 }
+
+static const node_t *min_r(const node_t *root);
+
+const node_t *tree_min_r(const tree_t *tree) {
+  if (tree) {
+    return min_r(tree->root);
+  }
+  return NULL;
+}
+
+static const node_t *min_r(const node_t *root) {
+  if (root->left==NULL)
+    return root;
+  return min_r(root->left);
+}
