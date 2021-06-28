@@ -127,7 +127,7 @@ const node_t *tree_min_r(const tree_t *tree) {
 }
 
 static const node_t *min_r(const node_t *root) {
-  if (root->left==NULL)
-    return root;
-  return min_r(root->left);
+  if (root->left)
+    return min_r(root->left);
+  return root;
 }
