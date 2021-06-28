@@ -5,6 +5,7 @@ void run_tests() {
   run_find_tests();
   run_min_tests();
   run_max_tests();
+  run_height_tests();
 }
 
 void run_add_tests() {
@@ -233,3 +234,64 @@ void test_max4(const node_t *(*max)(const tree_t *tree)) {
   assert(r->key==34);
   assert(strcmp(r->value, "Dima")==0);
 }
+
+void run_height_tests() {
+  size_t(*func_ptr[])(
+  const tree_t *tree) = { tree_height, tree_height_r };
+  for (size_t i = 0; i < 2; ++i) {
+    test_height1(func_ptr[i]);
+    test_height2(func_ptr[i]);
+    test_height3(func_ptr[i]);
+    test_height4(func_ptr[i]);
+  }
+
+}
+
+void test_height1(size_t (*height)(const tree_t *tree)) {
+  printf("test_height1()\n");
+
+  tree_t *tree = NULL;
+
+  size_t r = height(tree);
+
+  assert(r==0);
+}
+
+void test_height2(size_t (*height)(const tree_t *tree)) {
+  printf("test_height2()\n");
+
+  tree_t tree;
+  tree_init(&tree, 29, "Denis");
+
+  size_t r = height(&tree);
+
+  assert(r==1);
+}
+
+void test_height3(size_t (*height)(const tree_t *tree)) {
+  printf("test_height3()\n");
+
+  tree_t tree;
+  tree_init(&tree, 29, "Denis");
+  tree_add(&tree, 28, "Egor");
+  tree_add(&tree, 34, "Dima");
+
+  size_t r = height(&tree);
+
+  assert(r==2);
+}
+
+void test_height4(size_t (*height)(const tree_t *tree)) {
+  printf("test_height4()\n");
+
+  tree_t tree;
+  tree_init(&tree, 29, "Denis");
+  tree_add(&tree, 28, "Egor");
+  tree_add(&tree, 34, "Dima");
+  tree_add(&tree, 36, "Gena");
+
+  size_t r = height(&tree);
+
+  assert(r==3);
+}
+

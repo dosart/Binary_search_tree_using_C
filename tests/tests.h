@@ -31,9 +31,16 @@ void test_min4(const node_t *(*min)(const tree_t *tree));
 
 void run_max_tests();
 
-void test_max1(const node_t *(*min)(const tree_t *tree));
-void test_max2(const node_t *(*min)(const tree_t *tree));
-void test_max3(const node_t *(*min)(const tree_t *tree));
-void test_max4(const node_t *(*min)(const tree_t *tree));
+void test_max1(const node_t *(*max)(const tree_t *tree));
+void test_max2(const node_t *(*max)(const tree_t *tree));
+void test_max3(const node_t *(*max)(const tree_t *tree));
+void test_max4(const node_t *(*max)(const tree_t *tree));
+
+void run_height_tests();
+
+void test_height1(size_t (*height)(const tree_t *tree));
+void test_height2(size_t (*height)(const tree_t *tree));
+void test_height3(size_t (*height)(const tree_t *tree));
+void test_height4(size_t (*height)(const tree_t *tree));
 
 #endif //BINARY_SEARCH_TREE_TESTS_TESTS_H_

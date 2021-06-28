@@ -136,4 +136,26 @@ const node_t *tree_max(const tree_t *tree);
  */
 const node_t *tree_max_r(const tree_t *tree);
 
+/**
+ * @ingroup binary_search_tree
+ *
+ * @brief Returns the height of the tree in nodes, 0 if empty (iterative version).
+ *
+ * @param tree Pointer to binary search tree data structure.
+ *
+ * @returns height of three
+ */
+size_t tree_height(const tree_t *tree);
+
+/**
+ * @ingroup binary_search_tree
+ *
+ * @brief Returns the height of the tree in nodes, 0 if empty (recursive version).
+ *
+ * @param tree Pointer to binary search tree data structure.
+ *
+ * @returns height of three
+ */
+size_t tree_height_r(const tree_t *tree);
+
 #endif //BINARY_SEARCH_TREE_INCLUDE_BINARY_TREE_H_
