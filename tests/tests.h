@@ -29,4 +29,11 @@ void test_min2(const node_t *(*min)(const tree_t *tree));
 void test_min3(const node_t *(*min)(const tree_t *tree));
 void test_min4(const node_t *(*min)(const tree_t *tree));
 
+void run_max_tests();
+
+void test_max1(const node_t *(*min)(const tree_t *tree));
+void test_max2(const node_t *(*min)(const tree_t *tree));
+void test_max3(const node_t *(*min)(const tree_t *tree));
+void test_max4(const node_t *(*min)(const tree_t *tree));
+
 #endif //BINARY_SEARCH_TREE_TESTS_TESTS_H_

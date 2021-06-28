@@ -131,3 +131,30 @@ static const node_t *min_r(const node_t *root) {
     return root;
   return min_r(root->left);
 }
+
+const node_t *tree_max(const tree_t *tree) {
+  if (tree) {
+    node_t *curr = tree->root;
+    while (curr->right) {
+      curr = curr->right;
+    }
+    return curr;
+  }
+  return NULL;
+}
+
+static const node_t *max_r(node_t *root);
+
+const node_t *tree_max_r(const tree_t *tree) {
+  if (tree) {
+    return max_r(tree->root);
+  }
+  return NULL;
+}
+
+static const node_t *max_r(node_t *root) {
+  if (root->right) {
+    return max_r(root->right);
+  }
+  return root;
+}

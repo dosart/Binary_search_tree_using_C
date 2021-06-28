@@ -4,6 +4,7 @@ void run_tests() {
   run_add_tests();
   run_find_tests();
   run_min_tests();
+  run_max_tests();
 }
 
 void run_add_tests() {
@@ -133,9 +134,7 @@ void test_min1(const node_t *(*min)(const tree_t *tree)) {
   printf("test_min1()\n");
 
   tree_t *tree = NULL;
-
   const node_t *result = min(tree);
-
   assert(result==NULL);
 }
 
@@ -176,4 +175,61 @@ void test_min4(const node_t *(*min)(const tree_t *tree)) {
 
   assert(r->key==28);
   assert(strcmp(r->value, "Egor")==0);
+}
+
+void run_max_tests() {
+  const node_t *(*funct_ptr[])(const tree_t *root) = {tree_max, tree_max_r};
+  for (size_t i = 0; i < 2; ++i) {
+    test_max1(funct_ptr[i]);
+    test_max2(funct_ptr[i]);
+    test_max3(funct_ptr[i]);
+    test_max4(funct_ptr[i]);
+  }
+}
+
+void test_max1(const node_t *(*max)(const tree_t *tree)) {
+  printf("test_max1()\n");
+
+  tree_t *tree = NULL;
+  const node_t *result = max(tree);
+  assert(result==NULL);
+}
+
+void test_max2(const node_t *(*max)(const tree_t *tree)) {
+  printf("test_max2()\n");
+
+  tree_t tree;
+  tree_init(&tree, 29, "Denis");
+
+  const node_t *r = max(&tree);
+
+  assert(r->key==29);
+  assert(strcmp(r->value, "Denis")==0);
+}
+
+void test_max3(const node_t *(*max)(const tree_t *tree)) {
+  printf("test_max3()\n");
+
+  tree_t tree;
+  tree_init(&tree, 29, "Denis");
+  tree_add(&tree, 28, "Egor");
+
+  const node_t *r = max(&tree);
+
+  assert(r->key==29);
+  assert(strcmp(r->value, "Denis")==0);
+}
+
+void test_max4(const node_t *(*max)(const tree_t *tree)) {
+  printf("test_max4()\n");
+
+  tree_t tree;
+  tree_init(&tree, 29, "Denis");
+  tree_add(&tree, 28, "Egor");
+  tree_add(&tree, 34, "Dima");
+
+  const node_t *r = max(&tree);
+
+  assert(r->key==34);
+  assert(strcmp(r->value, "Dima")==0);
 }

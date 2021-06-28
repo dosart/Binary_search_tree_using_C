@@ -114,4 +114,26 @@ const node_t *tree_min(const tree_t *tree);
  */
 const node_t *tree_min_r(const tree_t *tree);
 
+/**
+ * @ingroup binary_search_tree
+ *
+ * @brief Returns node with max key(iterative version).
+ *
+ * @param tree Pointer to binary search tree data structure.
+ *
+ * @returns founded node or NULL if not found
+ */
+const node_t *tree_max(const tree_t *tree);
+
+/**
+ * @ingroup binary_search_tree
+ *
+ * @brief Returns node with max key(recursive version).
+ *
+ * @param tree Pointer to binary search tree data structure.
+ *
+ * @returns founded node or NULL if not found
+ */
+const node_t *tree_max_r(const tree_t *tree);
+
 #endif //BINARY_SEARCH_TREE_INCLUDE_BINARY_TREE_H_
