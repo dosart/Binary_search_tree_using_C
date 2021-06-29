@@ -158,4 +158,26 @@ size_t tree_height(const tree_t *tree);
  */
 size_t tree_height_r(const tree_t *tree);
 
+/**
+ * @ingroup binary_search_tree
+ *
+ * @brief Returns the number of nodes stored in the tree(iterative version).
+ *
+ * @param tree Pointer to binary search tree data structure.
+ *
+ * @returns count of nodes
+ */
+size_t tree_node_count(const tree_t *tree);
+
+/**
+ * @ingroup binary_search_tree
+ *
+ * @brief Returns the number of nodes stored in the tree(recursive version).
+ *
+ * @param tree Pointer to binary search tree data structure.
+ *
+ * @returns count of nodes
+ */
+size_t tree_node_count_r(const tree_t *tree);
+
 #endif //BINARY_SEARCH_TREE_INCLUDE_BINARY_TREE_H_

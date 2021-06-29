@@ -175,6 +175,31 @@ static size_t max(size_t x, size_t y) {
   return x > y ? x : y;
 }
 
+static size_t height_r(const node_t *tree);
+
+size_t tree_height_r(const tree_t *tree) {
+  if (tree) {
+    return height_r(tree->root);
+  }
+  return 0;
+}
+
+size_t tree_node_count(const tree_t *tree) {
+  if (tree) {
+    return 1 + left_height(tree->root->left) + right_height(tree->root->right);
+  }
+  return 0;
+}
+
+static size_t node_count_r(const node_t *tree);
+
+size_t tree_node_count_r(const tree_t *tree) {
+  if (tree) {
+    return node_count_r(tree->root);
+  }
+  return 0;
+}
+
 static size_t left_height(const node_t *root) {
   if (root) {
     size_t count = 1;
@@ -199,18 +224,17 @@ static size_t right_height(const node_t *root) {
   return 0;
 }
 
-static size_t height_r(const node_t *tree);
-
-size_t tree_height_r(const tree_t *tree) {
-  if (tree) {
-    return height_r(tree->root);
-  }
-  return 0;
-}
-
 static size_t height_r(const node_t *tree) {
   if (tree) {
     return 1 + max(height_r(tree->left), height_r(tree->right));
   }
   return 0;
 }
+
+static size_t node_count_r(const node_t *tree) {
+  if (tree==NULL) {
+    return 0;
+  }
+  return 1 + node_count_r(tree->left) + node_count_r(tree->right);
+}
+

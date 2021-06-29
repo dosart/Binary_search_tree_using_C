@@ -6,6 +6,7 @@ void run_tests() {
   run_min_tests();
   run_max_tests();
   run_height_tests();
+  run_node_count_tests();
 }
 
 void run_add_tests() {
@@ -293,5 +294,64 @@ void test_height4(size_t (*height)(const tree_t *tree)) {
   size_t r = height(&tree);
 
   assert(r==3);
+}
+
+void run_node_count_tests() {
+  size_t(*func_ptr[])(
+  const tree_t *tree) = { tree_node_count_r, tree_node_count };
+  for (size_t i = 0; i < 2; ++i) {
+    test_node_count1(func_ptr[i]);
+    test_node_count2(func_ptr[i]);
+    test_node_count3(func_ptr[i]);
+    test_node_count4(func_ptr[i]);
+  }
+}
+
+void test_node_count1(size_t (*node_count)(const tree_t *tree)) {
+  printf("test_node_count1()\n");
+
+  tree_t tree;
+  tree_init(&tree, 29, "Denis");
+
+  size_t r = node_count(&tree);
+
+  assert(r==1);
+}
+
+void test_node_count2(size_t (*node_count)(const tree_t *tree)) {
+  printf("test_node_count2()\n");
+
+  tree_t tree;
+  tree_init(&tree, 29, "Denis");
+  tree_add(&tree, 28, "Egor");
+  tree_add(&tree, 34, "Dima");
+
+  size_t r = node_count(&tree);
+
+  assert(r==3);
+}
+
+void test_node_count3(size_t (*node_count)(const tree_t *tree)) {
+  printf("test_node_count3()\n");
+
+  tree_t tree;
+  tree_init(&tree, 29, "Denis");
+  tree_add(&tree, 28, "Egor");
+  tree_add(&tree, 34, "Dima");
+  tree_add(&tree, 22, "Alex");
+
+  size_t r = node_count(&tree);
+
+  assert(r==4);
+}
+
+void test_node_count4(size_t (*node_count)(const tree_t *tree)) {
+  printf("test_node_count4()\n");
+
+  tree_t *tree = NULL;
+
+  size_t r = node_count(tree);
+
+  assert(r==0);
 }
 

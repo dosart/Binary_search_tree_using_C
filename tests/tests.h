@@ -43,4 +43,11 @@ void test_height2(size_t (*height)(const tree_t *tree));
 void test_height3(size_t (*height)(const tree_t *tree));
 void test_height4(size_t (*height)(const tree_t *tree));
 
+void run_node_count_tests();
+
+void test_node_count1(size_t (*node_count)(const tree_t *tree));
+void test_node_count2(size_t (*node_count)(const tree_t *tree));
+void test_node_count3(size_t (*node_count)(const tree_t *tree));
+void test_node_count4(size_t (*node_count)(const tree_t *tree));
+
 #endif //BINARY_SEARCH_TREE_TESTS_TESTS_H_
