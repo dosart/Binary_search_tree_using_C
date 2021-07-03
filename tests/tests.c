@@ -15,6 +15,12 @@ void run_tests() {
   test_tree_successor5();
   test_tree_successor6();
 
+  test_tree_predecessor1();
+  test_tree_predecessor2();
+  test_tree_predecessor3();
+  test_tree_predecessor4();
+  test_tree_predecessor5();
+  test_tree_predecessor6();
 }
 
 void run_add_tests() {
@@ -469,5 +475,113 @@ void test_tree_successor6() {
   const node_t *successor = tree_successor(&tree, 25);
 
   assert(successor==NULL);
+}
+
+void test_tree_predecessor1() {
+  printf("test_tree_predecessor1()\n");
+
+  tree_t tree;
+  tree_init(&tree, 9, "Denis");
+  tree_add(&tree, 7, "Egor");
+  tree_add(&tree, 15, "Dima");
+  tree_add(&tree, 3, "Alex1");
+  tree_add(&tree, 8, "Alex2");
+  tree_add(&tree, 5, "Alex2");
+  tree_add(&tree, 21, "Alex3");
+  tree_add(&tree, 17, "Alex4");
+
+  const node_t *predecessor = tree_predecessor(&tree, 15);
+
+  assert(predecessor->key==9);
+}
+
+void test_tree_predecessor2() {
+  printf("test_tree_predecessor2()\n");
+
+  tree_t tree;
+  tree_init(&tree, 9, "Denis");
+  tree_add(&tree, 7, "Egor");
+  tree_add(&tree, 15, "Dima");
+  tree_add(&tree, 3, "Alex1");
+  tree_add(&tree, 8, "Alex2");
+  tree_add(&tree, 5, "Alex2");
+  tree_add(&tree, 21, "Alex3");
+  tree_add(&tree, 17, "Alex4");
+
+  const node_t *predecessor = tree_predecessor(&tree, 5);
+
+  assert(predecessor->key==3);
+}
+
+void test_tree_predecessor3() {
+  printf("test_tree_predecessor3()\n");
+
+  tree_t tree;
+  tree_init(&tree, 9, "Denis");
+  tree_add(&tree, 7, "Egor");
+  tree_add(&tree, 15, "Dima");
+  tree_add(&tree, 3, "Alex1");
+  tree_add(&tree, 8, "Alex2");
+  tree_add(&tree, 5, "Alex2");
+  tree_add(&tree, 21, "Alex3");
+  tree_add(&tree, 17, "Alex4");
+
+  const node_t *predecessor = tree_predecessor(&tree, 17);
+
+  assert(predecessor->key==15);
+}
+
+void test_tree_predecessor4() {
+  printf("test_tree_predecessor4()\n");
+
+  tree_t tree;
+  tree_init(&tree, 9, "Denis");
+  tree_add(&tree, 7, "Egor");
+  tree_add(&tree, 15, "Dima");
+  tree_add(&tree, 3, "Alex1");
+  tree_add(&tree, 8, "Alex2");
+  tree_add(&tree, 5, "Alex2");
+  tree_add(&tree, 21, "Alex3");
+  tree_add(&tree, 17, "Alex4");
+
+  const node_t *predecessor = tree_predecessor(&tree, 21);
+
+  assert(predecessor->key==17);
+}
+
+void test_tree_predecessor5() {
+  printf("test_tree_predecessor5()\n");
+
+  tree_t tree;
+  tree_init(&tree, 9, "Denis");
+  tree_add(&tree, 7, "Egor");
+  tree_add(&tree, 15, "Dima");
+  tree_add(&tree, 3, "Alex1");
+  tree_add(&tree, 8, "Alex2");
+  tree_add(&tree, 5, "Alex2");
+  tree_add(&tree, 21, "Alex3");
+  tree_add(&tree, 17, "Alex4");
+
+  const node_t *predecessor = tree_predecessor(&tree, 9);
+
+  assert(predecessor->key==8);
+}
+
+void test_tree_predecessor6() {
+  printf("test_tree_predecessor6()\n");
+
+  tree_t tree;
+  tree_init(&tree, 9, "Denis");
+  tree_add(&tree, 7, "Egor");
+  tree_add(&tree, 15, "Dima");
+  tree_add(&tree, 3, "Alex1");
+  tree_add(&tree, 8, "Alex2");
+  tree_add(&tree, 5, "Alex2");
+  tree_add(&tree, 21, "Alex3");
+  tree_add(&tree, 17, "Alex4");
+
+  const node_t *predecessor = tree_predecessor(&tree, 3);
+
+  assert(predecessor==NULL);
 }
 

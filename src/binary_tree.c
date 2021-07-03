@@ -259,3 +259,25 @@ const node_t *tree_successor(const tree_t *tree, int key) {
   return successor;
 }
 
+const node_t *tree_predecessor(const tree_t *tree, int key) {
+  node_t *predecessor = NULL;
+  if (tree) {
+    node_t *root = tree->root;
+    while (root) {
+      if (key < root->key) {
+        root = root->left;
+      } else if (key > root->key) {
+        predecessor = root;
+        root = root->right;
+      } else {
+        if (root->left) {
+          return max_r(root->left);
+        }
+        return predecessor;
+      }
+    }
+    return predecessor;
+  }
+  return predecessor;
+}
+

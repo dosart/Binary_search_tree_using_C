@@ -57,4 +57,11 @@ void test_tree_successor4();
 void test_tree_successor5();
 void test_tree_successor6();
 
+void test_tree_predecessor1();
+void test_tree_predecessor2();
+void test_tree_predecessor3();
+void test_tree_predecessor4();
+void test_tree_predecessor5();
+void test_tree_predecessor6();
+
 #endif //BINARY_SEARCH_TREE_TESTS_TESTS_H_
