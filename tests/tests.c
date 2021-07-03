@@ -7,6 +7,14 @@ void run_tests() {
   run_max_tests();
   run_height_tests();
   run_node_count_tests();
+
+  test_tree_successor1();
+  test_tree_successor2();
+  test_tree_successor3();
+  test_tree_successor4();
+  test_tree_successor5();
+  test_tree_successor6();
+
 }
 
 void run_add_tests() {
@@ -353,5 +361,113 @@ void test_node_count4(size_t (*node_count)(const tree_t *tree)) {
   size_t r = node_count(tree);
 
   assert(r==0);
+}
+
+void test_tree_successor1() {
+  printf("test_tree_successor1()\n");
+
+  tree_t tree;
+  tree_init(&tree, 9, "Denis");
+  tree_add(&tree, 7, "Egor");
+  tree_add(&tree, 15, "Dima");
+  tree_add(&tree, 3, "Alex1");
+  tree_add(&tree, 8, "Alex2");
+  tree_add(&tree, 5, "Alex2");
+  tree_add(&tree, 21, "Alex3");
+  tree_add(&tree, 17, "Alex4");
+
+  const node_t *successor = tree_successor(&tree, 7);
+
+  assert(successor->key==8);
+}
+
+void test_tree_successor2() {
+  printf("test_tree_successor2()\n");
+
+  tree_t tree;
+  tree_init(&tree, 9, "Denis");
+  tree_add(&tree, 7, "Egor");
+  tree_add(&tree, 15, "Dima");
+  tree_add(&tree, 3, "Alex1");
+  tree_add(&tree, 8, "Alex2");
+  tree_add(&tree, 5, "Alex2");
+  tree_add(&tree, 21, "Alex3");
+  tree_add(&tree, 17, "Alex4");
+
+  const node_t *successor = tree_successor(&tree, 5);
+
+  assert(successor->key==7);
+}
+
+void test_tree_successor3() {
+  printf("test_tree_successor3()\n");
+
+  tree_t tree;
+  tree_init(&tree, 9, "Denis");
+  tree_add(&tree, 7, "Egor");
+  tree_add(&tree, 15, "Dima");
+  tree_add(&tree, 3, "Alex1");
+  tree_add(&tree, 8, "Alex2");
+  tree_add(&tree, 5, "Alex2");
+  tree_add(&tree, 21, "Alex3");
+  tree_add(&tree, 17, "Alex4");
+
+  const node_t *successor = tree_successor(&tree, 17);
+
+  assert(successor->key==21);
+}
+
+void test_tree_successor4() {
+  printf("test_tree_successor4()\n");
+
+  tree_t tree;
+  tree_init(&tree, 9, "Denis");
+  tree_add(&tree, 7, "Egor");
+  tree_add(&tree, 15, "Dima");
+  tree_add(&tree, 3, "Alex1");
+  tree_add(&tree, 8, "Alex2");
+  tree_add(&tree, 5, "Alex2");
+  tree_add(&tree, 21, "Alex3");
+  tree_add(&tree, 17, "Alex4");
+
+  const node_t *successor = tree_successor(&tree, 15);
+
+  assert(successor->key==17);
+}
+
+void test_tree_successor5() {
+  printf("test_tree_successor5()\n");
+
+  tree_t tree;
+  tree_init(&tree, 9, "Denis");
+  tree_add(&tree, 7, "Egor");
+  tree_add(&tree, 15, "Dima");
+  tree_add(&tree, 3, "Alex1");
+  tree_add(&tree, 8, "Alex2");
+  tree_add(&tree, 5, "Alex2");
+  tree_add(&tree, 21, "Alex3");
+  tree_add(&tree, 17, "Alex4");
+
+  const node_t *successor = tree_successor(&tree, 21);
+
+  assert(successor==NULL);
+}
+
+void test_tree_successor6() {
+  printf("test_tree_successor6()\n");
+
+  tree_t tree;
+  tree_init(&tree, 9, "Denis");
+  tree_add(&tree, 7, "Egor");
+  tree_add(&tree, 15, "Dima");
+  tree_add(&tree, 3, "Alex1");
+  tree_add(&tree, 8, "Alex2");
+  tree_add(&tree, 5, "Alex2");
+  tree_add(&tree, 21, "Alex3");
+  tree_add(&tree, 17, "Alex4");
+
+  const node_t *successor = tree_successor(&tree, 25);
+
+  assert(successor==NULL);
 }
 

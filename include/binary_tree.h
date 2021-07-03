@@ -180,4 +180,15 @@ size_t tree_node_count(const tree_t *tree);
  */
 size_t tree_node_count_r(const tree_t *tree);
 
+/**
+ * @ingroup binary_search_tree
+ *
+ * @brief Returns node that contains next key.
+ *
+ * @param tree Pointer to binary search tree data structure.
+ *
+ * @returns ode that contains next key
+ */
+const node_t *tree_successor(const tree_t *tree, int key);
+
 #endif //BINARY_SEARCH_TREE_INCLUDE_BINARY_TREE_H_

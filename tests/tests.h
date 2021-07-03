@@ -50,4 +50,11 @@ void test_node_count2(size_t (*node_count)(const tree_t *tree));
 void test_node_count3(size_t (*node_count)(const tree_t *tree));
 void test_node_count4(size_t (*node_count)(const tree_t *tree));
 
+void test_tree_successor1();
+void test_tree_successor2();
+void test_tree_successor3();
+void test_tree_successor4();
+void test_tree_successor5();
+void test_tree_successor6();
+
 #endif //BINARY_SEARCH_TREE_TESTS_TESTS_H_

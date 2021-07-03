@@ -238,3 +238,24 @@ static size_t node_count_r(const node_t *tree) {
   return 1 + node_count_r(tree->left) + node_count_r(tree->right);
 }
 
+const node_t *tree_successor(const tree_t *tree, int key) {
+  node_t *successor = NULL;
+  if (tree) {
+    node_t *root = tree->root;
+    while (root) {
+      if (key < root->key) {
+        successor = root;
+        root = root->left;
+      } else if (key > root->key) {
+        root = root->right;
+      } else {
+        if (root->right)
+          return min(root->right);
+        return successor;
+      }
+    }
+    return successor;
+  }
+  return successor;
+}
+
