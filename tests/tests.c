@@ -1,5 +1,7 @@
 #include "tests.h"
 
+#include "stack.h"
+
 void run_tests() {
   run_add_tests();
   run_find_tests();

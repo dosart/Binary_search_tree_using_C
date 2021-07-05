@@ -22,4 +22,4 @@ add_compile_options(
 )
 
 
-add_executable(Binary_search_tree tests/main.c src/binary_tree.c include/binary_tree.h tests/tests.c tests/tests.h)
+add_executable(Binary_search_tree tests/main.c src/binary_tree.c include/binary_tree.h tests/tests.c tests/tests.h include/stack.h src/stack.c)

@@ -344,4 +344,3 @@ static void delete_tree(node_t *root) {
     free(root);
   }
 }
-
