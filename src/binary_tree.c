@@ -281,3 +281,19 @@ const node_t *tree_predecessor(const tree_t *tree, int key) {
   return predecessor;
 }
 
+static void preorder(node_t *root, void (*visit)(node_t *node, void *params), void *params);
+
+void tree_pre_order_travers(tree_t *tree, void (*visit)(node_t *node, void *params), void *params) {
+  if (tree) {
+    preorder(tree->root, visit, params);
+  }
+}
+
+static void preorder(node_t *root, void (*visit)(node_t *node, void *params), void *params) {
+  if (root) {
+    visit(root, params);
+    preorder(root->left, visit, params);
+    preorder(root->right, visit, params);
+  }
+}
+

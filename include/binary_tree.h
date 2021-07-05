@@ -78,7 +78,7 @@ void tree_add_r(tree_t *tree, int key, char *value);
  *
  * @returns founded node or NULL if not found
  */
-const node_t* tree_find(tree_t *tree, int key);
+const node_t *tree_find(tree_t *tree, int key);
 
 /**
  * @ingroup binary_search_tree
@@ -90,7 +90,7 @@ const node_t* tree_find(tree_t *tree, int key);
  *
  * @returns founded node or NULL if not found
  */
-const node_t* tree_find_r(tree_t *tree, int key);
+const node_t *tree_find_r(tree_t *tree, int key);
 
 /**
  * @ingroup binary_search_tree
@@ -201,5 +201,18 @@ const node_t *tree_successor(const tree_t *tree, int key);
  * @returns ode that contains next key
  */
 const node_t *tree_predecessor(const tree_t *tree, int key);
+
+/**
+ * @ingroup binary_search_tree
+ *
+ * @brief Visits nodes in preorder(root, left, right).
+ *
+ * @param tree Pointer to binary search tree data structure.
+ * @param visit Function of working with nodes(first argument is node of tree, second argument is param(pointer to void)).
+ * @param params Params for visit function.
+ *
+ * @returns ode that contains next key
+ */
+void tree_pre_order_travers(tree_t *tree, void (*visit)(node_t *node, void *params), void *params);
 
 #endif //BINARY_SEARCH_TREE_INCLUDE_BINARY_TREE_H_
