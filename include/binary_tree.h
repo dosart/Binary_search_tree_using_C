@@ -209,10 +209,23 @@ const node_t *tree_predecessor(const tree_t *tree, int key);
  *
  * @param tree Pointer to binary search tree data structure.
  * @param visit Function of working with nodes(first argument is node of tree, second argument is param(pointer to void)).
- * @param params Params for visit function.
+ * @param params Params for visit function(additional parameters (if needed)).
  *
  * @returns ode that contains next key
  */
 void tree_pre_order_travers(tree_t *tree, void (*visit)(node_t *node, void *params), void *params);
+
+/**
+ * @ingroup binary_search_tree
+ *
+ * @brief Visits nodes in inorder(left, root, right).
+ *
+ * @param tree Pointer to binary search tree data structure.
+ * @param visit Function of working with nodes(first argument is node of tree, second argument is param(pointer to void)).
+ * @param params Params for visit function(additional parameters (if needed)).
+ *
+ * @returns ode that contains next key
+ */
+void tree_in_order_travers(tree_t *tree, void (*visit)(node_t *node, void *params), void *params);
 
 #endif //BINARY_SEARCH_TREE_INCLUDE_BINARY_TREE_H_

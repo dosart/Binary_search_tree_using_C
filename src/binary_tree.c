@@ -297,3 +297,19 @@ static void preorder(node_t *root, void (*visit)(node_t *node, void *params), vo
   }
 }
 
+static void inorder(node_t *root, void (*visit)(node_t *node, void *params), void *params);
+
+void tree_in_order_travers(tree_t *tree, void (*visit)(node_t *node, void *params), void *params) {
+  if (tree) {
+    inorder(tree->root, visit, params);
+  }
+}
+
+static void inorder(node_t *root, void (*visit)(node_t *node, void *params), void *params) {
+  if (root) {
+    inorder(root->left, visit, params);
+    visit(root, params);
+    inorder(root->right, visit, params);
+  }
+}
+
