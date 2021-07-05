@@ -51,4 +51,13 @@ void stack_push(stack_t *stack, node_t *node);
  */
 node_t *stack_pop(stack_t *stack);
 
+/**
+ * @ingroup stack
+ *
+ * @brief Free memory in stack_item_t.
+ *
+ * @param s Pointer to stack.
+ */
+void stack_free(stack_t *stack);
+
 #endif //BINARY_SEARCH_TREE_INCLUDE_STACK_H_

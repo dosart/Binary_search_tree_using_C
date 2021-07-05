@@ -32,3 +32,9 @@ node_t *stack_pop(stack_t *stack) {
   }
   return NULL;
 }
+
+void stack_free(stack_t *stack) {
+  if (stack) {
+    free(stack->data);
+  }
+}
