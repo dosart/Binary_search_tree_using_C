@@ -4,7 +4,7 @@ static node_t *make_node(int key, char *value);
 
 void tree_init(tree_t *table, int key, char *value) {
   if (table) {
-    table->root = make_node(key, value);
+    table->root = (node_t *) make_node(key, value);
     table->count = 1;
   }
 }
@@ -310,6 +310,38 @@ static void inorder(node_t *root, void (*visit)(node_t *node, void *params), voi
     inorder(root->left, visit, params);
     visit(root, params);
     inorder(root->right, visit, params);
+  }
+}
+
+static void postorder(node_t *root, void (*visit)(node_t *node, void *params), void *params);
+
+void tree_post_order_travers(tree_t *tree, void (*visit)(node_t *node, void *params), void *params) {
+  if (tree) {
+    postorder(tree->root, visit, params);
+  }
+}
+
+static void postorder(node_t *root, void (*visit)(node_t *node, void *params), void *params) {
+  if (root) {
+    postorder(root->right, visit, params);
+    postorder(root->left, visit, params);
+    visit(root, params);
+  }
+}
+
+static void delete_tree(node_t *root);
+
+void tree_delete(tree_t *tree) {
+  if (tree) {
+    delete_tree(tree->root);
+  }
+}
+
+static void delete_tree(node_t *root) {
+  if (root) {
+    delete_tree(root->left);
+    delete_tree(root->right);
+    free(root);
   }
 }
 

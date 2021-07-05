@@ -42,6 +42,7 @@ void test_add1(void (*add)(tree_t *tree, int key, char *value)) {
   add(&tree, 28, "Egor");
 
   assert(tree.count==3);
+  tree_delete(&tree);
 }
 
 void test_add2(void (*add)(tree_t *tree, int key, char *value)) {
@@ -61,6 +62,7 @@ void test_add3(void (*add)(tree_t *tree, int key, char *value)) {
   add(&tree, 34, "Dima2");
 
   assert(tree.count==3);
+  tree_delete(&tree);
 }
 
 void run_find_tests() {
@@ -92,6 +94,7 @@ void test_find2(const node_t *(*find)(tree_t *tree, int key)) {
 
   const node_t *r = find(&tree, 35);
   assert(r==NULL);
+  tree_delete(&tree);
 }
 
 void test_find3(const node_t *(*find)(tree_t *tree, int key)) {
@@ -106,6 +109,7 @@ void test_find3(const node_t *(*find)(tree_t *tree, int key)) {
 
   assert(r->key==29);
   assert(strcmp(r->value, "Denis")==0);
+  tree_delete(&tree);
 }
 
 void test_find4(const node_t *(*find)(tree_t *tree, int key)) {
@@ -120,6 +124,7 @@ void test_find4(const node_t *(*find)(tree_t *tree, int key)) {
 
   assert(r->key==34);
   assert(strcmp(r->value, "Dima1")==0);
+  tree_delete(&tree);
 }
 
 void test_find5(const node_t *(*find)(tree_t *tree, int key)) {
@@ -134,6 +139,7 @@ void test_find5(const node_t *(*find)(tree_t *tree, int key)) {
 
   assert(r->key==28);
   assert(strcmp(r->value, "Egor")==0);
+  tree_delete(&tree);
 }
 
 void run_min_tests() {
@@ -164,6 +170,7 @@ void test_min2(const node_t *(*min)(const tree_t *tree)) {
 
   assert(r->key==29);
   assert(strcmp(r->value, "Denis")==0);
+  tree_delete(&tree);
 }
 
 void test_min3(const node_t *(*min)(const tree_t *tree)) {
@@ -177,6 +184,7 @@ void test_min3(const node_t *(*min)(const tree_t *tree)) {
 
   assert(r->key==28);
   assert(strcmp(r->value, "Egor")==0);
+  tree_delete(&tree);
 }
 
 void test_min4(const node_t *(*min)(const tree_t *tree)) {
@@ -191,6 +199,7 @@ void test_min4(const node_t *(*min)(const tree_t *tree)) {
 
   assert(r->key==28);
   assert(strcmp(r->value, "Egor")==0);
+  tree_delete(&tree);
 }
 
 void run_max_tests() {
@@ -221,6 +230,7 @@ void test_max2(const node_t *(*max)(const tree_t *tree)) {
 
   assert(r->key==29);
   assert(strcmp(r->value, "Denis")==0);
+  tree_delete(&tree);
 }
 
 void test_max3(const node_t *(*max)(const tree_t *tree)) {
@@ -234,6 +244,7 @@ void test_max3(const node_t *(*max)(const tree_t *tree)) {
 
   assert(r->key==29);
   assert(strcmp(r->value, "Denis")==0);
+  tree_delete(&tree);
 }
 
 void test_max4(const node_t *(*max)(const tree_t *tree)) {
@@ -248,6 +259,7 @@ void test_max4(const node_t *(*max)(const tree_t *tree)) {
 
   assert(r->key==34);
   assert(strcmp(r->value, "Dima")==0);
+  tree_delete(&tree);
 }
 
 void run_height_tests() {
@@ -281,6 +293,7 @@ void test_height2(size_t (*height)(const tree_t *tree)) {
   size_t r = height(&tree);
 
   assert(r==1);
+  tree_delete(&tree);
 }
 
 void test_height3(size_t (*height)(const tree_t *tree)) {
@@ -294,6 +307,7 @@ void test_height3(size_t (*height)(const tree_t *tree)) {
   size_t r = height(&tree);
 
   assert(r==2);
+  tree_delete(&tree);
 }
 
 void test_height4(size_t (*height)(const tree_t *tree)) {
@@ -308,6 +322,7 @@ void test_height4(size_t (*height)(const tree_t *tree)) {
   size_t r = height(&tree);
 
   assert(r==3);
+  tree_delete(&tree);
 }
 
 void run_node_count_tests() {
@@ -330,6 +345,7 @@ void test_node_count1(size_t (*node_count)(const tree_t *tree)) {
   size_t r = node_count(&tree);
 
   assert(r==1);
+  tree_delete(&tree);
 }
 
 void test_node_count2(size_t (*node_count)(const tree_t *tree)) {
@@ -343,6 +359,7 @@ void test_node_count2(size_t (*node_count)(const tree_t *tree)) {
   size_t r = node_count(&tree);
 
   assert(r==3);
+  tree_delete(&tree);
 }
 
 void test_node_count3(size_t (*node_count)(const tree_t *tree)) {
@@ -357,6 +374,7 @@ void test_node_count3(size_t (*node_count)(const tree_t *tree)) {
   size_t r = node_count(&tree);
 
   assert(r==4);
+  tree_delete(&tree);
 }
 
 void test_node_count4(size_t (*node_count)(const tree_t *tree)) {
@@ -385,6 +403,7 @@ void test_tree_successor1() {
   const node_t *successor = tree_successor(&tree, 7);
 
   assert(successor->key==8);
+  tree_delete(&tree);
 }
 
 void test_tree_successor2() {
@@ -403,6 +422,7 @@ void test_tree_successor2() {
   const node_t *successor = tree_successor(&tree, 5);
 
   assert(successor->key==7);
+  tree_delete(&tree);
 }
 
 void test_tree_successor3() {
@@ -421,6 +441,7 @@ void test_tree_successor3() {
   const node_t *successor = tree_successor(&tree, 17);
 
   assert(successor->key==21);
+  tree_delete(&tree);
 }
 
 void test_tree_successor4() {
@@ -439,6 +460,7 @@ void test_tree_successor4() {
   const node_t *successor = tree_successor(&tree, 15);
 
   assert(successor->key==17);
+  tree_delete(&tree);
 }
 
 void test_tree_successor5() {
@@ -457,6 +479,7 @@ void test_tree_successor5() {
   const node_t *successor = tree_successor(&tree, 21);
 
   assert(successor==NULL);
+  tree_delete(&tree);
 }
 
 void test_tree_successor6() {
@@ -475,6 +498,7 @@ void test_tree_successor6() {
   const node_t *successor = tree_successor(&tree, 25);
 
   assert(successor==NULL);
+  tree_delete(&tree);
 }
 
 void test_tree_predecessor1() {
@@ -493,6 +517,7 @@ void test_tree_predecessor1() {
   const node_t *predecessor = tree_predecessor(&tree, 15);
 
   assert(predecessor->key==9);
+  tree_delete(&tree);
 }
 
 void test_tree_predecessor2() {
@@ -511,6 +536,7 @@ void test_tree_predecessor2() {
   const node_t *predecessor = tree_predecessor(&tree, 5);
 
   assert(predecessor->key==3);
+  tree_delete(&tree);
 }
 
 void test_tree_predecessor3() {
@@ -529,6 +555,7 @@ void test_tree_predecessor3() {
   const node_t *predecessor = tree_predecessor(&tree, 17);
 
   assert(predecessor->key==15);
+  tree_delete(&tree);
 }
 
 void test_tree_predecessor4() {
@@ -547,6 +574,7 @@ void test_tree_predecessor4() {
   const node_t *predecessor = tree_predecessor(&tree, 21);
 
   assert(predecessor->key==17);
+  tree_delete(&tree);
 }
 
 void test_tree_predecessor5() {
@@ -565,6 +593,7 @@ void test_tree_predecessor5() {
   const node_t *predecessor = tree_predecessor(&tree, 9);
 
   assert(predecessor->key==8);
+  tree_delete(&tree);
 }
 
 void test_tree_predecessor6() {
@@ -583,5 +612,6 @@ void test_tree_predecessor6() {
   const node_t *predecessor = tree_predecessor(&tree, 3);
 
   assert(predecessor==NULL);
+  tree_delete(&tree);
 }
 

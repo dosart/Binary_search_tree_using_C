@@ -228,4 +228,26 @@ void tree_pre_order_travers(tree_t *tree, void (*visit)(node_t *node, void *para
  */
 void tree_in_order_travers(tree_t *tree, void (*visit)(node_t *node, void *params), void *params);
 
+/**
+ * @ingroup binary_search_tree
+ *
+ * @brief Visits nodes in postorder(left, right, root).
+ *
+ * @param tree Pointer to binary search tree data structure.
+ * @param visit Function of working with nodes(first argument is node of tree, second argument is param(pointer to void)).
+ * @param params Params for visit function(additional parameters (if needed)).
+ *
+ * @returns ode that contains next key
+ */
+void tree_post_order_travers(tree_t *tree, void (*visit)(node_t *node, void *params), void *params);
+
+/**
+ * @ingroup binary_search_tree
+ *
+ * @brief Deletes all nodes in tree, freeing their memory.
+ *
+ * @param tree Pointer to binary search tree data structure.
+ */
+void tree_delete(tree_t *tree);
+
 #endif //BINARY_SEARCH_TREE_INCLUDE_BINARY_TREE_H_
