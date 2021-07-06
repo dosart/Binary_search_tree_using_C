@@ -1,3 +1,4 @@
+ ![cppcheck-action](https://github.com/stepin654321/MiniProject_Template/workflows/cppcheck-action/badge.svg) ![Valgrind](https://github.com/stepin654321/MiniProject_Template/workflows/Valgrind/badge.svg)
 
 The project was made as part of the [Coding Interview University](https://github.com/Ilyushin/google-interview-university) course.
 
